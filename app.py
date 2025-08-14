@@ -52,51 +52,32 @@ with tab1:
     col1, col2 = st.columns(2)
     
     with col1:
-        gender = st.selectbox("Gender", ["Male", "Female"])
         SeniorCitizen = st.selectbox("Senior Citizen", [0, 1])
-        Partner = st.selectbox("Partner", ["Yes", "No"])
         Dependents = st.selectbox("Dependents", ["Yes", "No"])
         tenure = st.number_input("Tenure (months)", min_value=0, max_value=72, value=12)
-        PhoneService = st.selectbox("Phone Service", ["Yes", "No"])
-        MultipleLines = st.selectbox("Multiple Lines", ["No", "Yes", "No phone service"])
-
-    with col2:
         InternetService = st.selectbox("Internet Service", ["DSL", "Fiber optic", "No"])
         OnlineSecurity = st.selectbox("Online Security", ["No", "Yes", "No internet service"])
-        OnlineBackup = st.selectbox("Online Backup", ["No", "Yes", "No internet service"])
         DeviceProtection = st.selectbox("Device Protection", ["No", "Yes", "No internet service"])
+
+    with col2:
         TechSupport = st.selectbox("Tech Support", ["No", "Yes", "No internet service"])
-        StreamingTV = st.selectbox("Streaming TV", ["No", "Yes", "No internet service"])
-        StreamingMovies = st.selectbox("Streaming Movies", ["No", "Yes", "No internet service"])
-    
-    col3, col4 = st.columns(2)
-    with col3:
         Contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
         PaperlessBilling = st.selectbox("Paperless Billing", ["Yes", "No"])
         PaymentMethod = st.selectbox("Payment Method", [
             "Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"
         ])
         MonthlyCharges = st.number_input("Monthly Charges", min_value=0.0, max_value=200.0, value=70.0)
-    
-    with col4:
         TotalCharges = st.number_input("Total Charges", min_value=0.0, max_value=10000.0, value=1400.0)
 
     if st.button("✅ Predict Churn"):
         input_data = pd.DataFrame([{
-            "gender": gender,
             "SeniorCitizen": SeniorCitizen,
-            "Partner": Partner,
             "Dependents": Dependents,
             "tenure": tenure,
-            "PhoneService": PhoneService,
-            "MultipleLines": MultipleLines,
             "InternetService": InternetService,
             "OnlineSecurity": OnlineSecurity,
-            "OnlineBackup": OnlineBackup,
             "DeviceProtection": DeviceProtection,
             "TechSupport": TechSupport,
-            "StreamingTV": StreamingTV,
-            "StreamingMovies": StreamingMovies,
             "Contract": Contract,
             "PaperlessBilling": PaperlessBilling,
             "PaymentMethod": PaymentMethod,
